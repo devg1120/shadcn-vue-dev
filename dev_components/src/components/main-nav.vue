@@ -28,6 +28,14 @@ const activeLinkClass = "text-foreground"
             {{ t('common.overview') }}
         </router-link>
         <router-link 
+            to="/mail" 
+            :class="navLinkClass"
+            :active-class="activeLinkClass"
+            :exact-active-class="activeLinkClass"
+        >
+            {{ t('common.overview') }}
+        </router-link>
+        <router-link 
             to="/dashboard" 
             :class="navLinkClass"
             :active-class="activeLinkClass"

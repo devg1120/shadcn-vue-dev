@@ -3952,6 +3952,11 @@ d3@^7.2.1:
     d3-transition "3"
     d3-zoom "3"
 
+date-fns@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-4.1.0.tgz#64b3d83fff5aa80438f5b1a633c2e83b8a1c2d14"
+  integrity sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==
+
 dayjs@^1.11.13:
   version "1.11.18"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.18.tgz#835fa712aac52ab9dec8b1494098774ed7070a11"
@@ -4204,6 +4209,11 @@ embla-carousel@8.6.0:
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-8.6.0.tgz#abcedff2bff36992ea8ac27cd30080ca5b6a3f58"
   integrity sha512-SjWyZBHJPbqxHOzckOfo8lHisEaJWmwd23XppYFYVh10bU66/Pn5tkVkbkCMZVdbUE5eTCI2nD8OyIP4Z+uwkA==
+
+emoji-picker-element@^1.27.0:
+  version "1.27.0"
+  resolved "https://registry.yarnpkg.com/emoji-picker-element/-/emoji-picker-element-1.27.0.tgz#b2294b69ac16cc9362f2ac3718edfbe3e55b8dc9"
+  integrity sha512-CeN9g5/kq41+BfYPDpAbE2ejZRHbs1faFDmU9+E9wGA4JWLkok9zo1hwcAFnUhV4lPR3ZuLHiJxNG1mpjoF4TQ==
 
 emoji-regex@^10.3.0:
   version "10.5.0"

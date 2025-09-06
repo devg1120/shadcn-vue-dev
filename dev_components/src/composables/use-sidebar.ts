@@ -34,6 +34,11 @@ export function useSidebar() {
           url: '/sample2',
           icon: Apple,
         },
+        {
+          title: 'common.mail',    //GUSA
+          url: '/mail',
+          icon: Apple,
+        },
       ],
     },
   ]

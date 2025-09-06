@@ -17,6 +17,8 @@ const routeComponentMap: Record<string, string> = {
   '/sample1': 'Sample1Page',           // GUSA
   '/sample2': 'Sample2Page',           // GUSA
   '/mail': 'MailPage',           // GUSA
+  '/cards': 'CardsPage',           // GUSA
+  '/music': 'MusicPage',           // GUSA
   '/dashboard': 'DashboardPage',
   '/tasks': 'TasksPage',
   '/users': 'UsersPage',
@@ -83,6 +85,8 @@ function getPageTitle(path: string): string {
     '/sample1': t('common.sample1'),               //GUSA
     '/sample2': t('common.sample2'),               //GUSA
     '/mail': t('common.mail'),               //GUSA
+    '/cards': t('common.cards'),               //GUSA
+    '/music': t('common.music'),               //GUSA
     '/settings': t('common.settings'),
     '/settings/account': t('common.account'),
     '/settings/appearance': t('common.appearance'),

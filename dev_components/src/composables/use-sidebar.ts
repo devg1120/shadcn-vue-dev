@@ -39,6 +39,16 @@ export function useSidebar() {
           url: '/mail',
           icon: Apple,
         },
+        {
+          title: 'common.cards',    //GUSA
+          url: '/cards',
+          icon: Apple,
+        },
+        {
+          title: 'common.music',    //GUSA
+          url: '/music',
+          icon: Apple,
+        },
       ],
     },
   ]

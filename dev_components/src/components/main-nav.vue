@@ -36,6 +36,22 @@ const activeLinkClass = "text-foreground"
             {{ t('common.overview') }}
         </router-link>
         <router-link 
+            to="/cards" 
+            :class="navLinkClass"
+            :active-class="activeLinkClass"
+            :exact-active-class="activeLinkClass"
+        >
+            {{ t('common.overview') }}
+        </router-link>
+        <router-link 
+            to="/music" 
+            :class="navLinkClass"
+            :active-class="activeLinkClass"
+            :exact-active-class="activeLinkClass"
+        >
+            {{ t('common.overview') }}
+        </router-link>
+        <router-link 
             to="/dashboard" 
             :class="navLinkClass"
             :active-class="activeLinkClass"

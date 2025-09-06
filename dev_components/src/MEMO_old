@@ -1,0 +1,58 @@
+
+# ./pages/sample/index.vue               // GUSA
+
+# ./composables/use-sidebar.ts
+  navData.value = [
+    {
+      title: 'common.general',
+      items: [                           // GUSA
+        {
+          title: 'common.sample',   
+          url: '/sample',   
+          icon: Sample,         
+        },
+
+# ./plugins/i18n/en.json
+  "common": {
+    "dashboard": "Dashboard",
+    "sample": "Sample",                   //GUSA
+
+
+
+# ./components/main-nav.vue
+         <router-link 
+            to="/sample" 
+            :class="navLinkClass"
+            :active-class="activeLinkClass"
+            :exact-active-class="activeLinkClass"
+        >
+            {{ t('common.overview') }}
+        </router-link>
+
+# ./components/tab-system/TabManager.vue
+
+function getPageTitle(path: string): string {
+  const titleMap: Record<string, string> = {
+    '/tasks': t('common.tasks'),
+    '/users': t('common.users'),
+    '/sample': t('common.sample'),               //GUSA
+
+const routeComponentMap: Record<string, string> = {
+  '/dashboard': 'DashboardPage',
+  '/sample': 'SamplePage',                    // GUSA
+  '/tasks': 'TasksPage',
+  '/users': 'UsersPage',
+  '/settings': 'SettingsPage',
+  '/settings/account': 'SettingsAccountPage',
+  '/settings/appearance': 'SettingsAppearancePage',
+  '/settings/notifications': 'SettingsNotificationsPage',
+  '/settings/display': 'SettingsDisplayPage',
+  '/settings/profile': 'SettingsProfilePage',
+  '/apps': 'AppsPage',
+  '/ai-talk': 'AiTalkPage',
+  '/billing': 'BillingPage',
+  '/help-center': 'HelpCenterPage',
+  '/marketing': 'MarketingPage',
+  '/marketing/hello': 'MarketingHelloPage',
+}
+

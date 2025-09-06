@@ -1,0 +1,88 @@
+append     /sample1  : Sample1
+
+# ./pages/sample1/index.vue               // GUSA
+
+# ./composables/use-sidebar.ts
+ // https://lucide.dev/guide/packages/lucide-vue-next
+
+ import { Apple } from lucide-vue-next';
+
+  navData.value = [
+    {
+      title: 'common.general',
+      items: [                           // GUSA
+        {
+          title: 'common.sample',   
+          url: '/sample1',   
+          icon: Apple,         
+        },
+
+# ./plugins/i18n/en.json
+#
+  "common": {
+    "dashboard": "Dashboard",
+    "sample1": "Sample1",                   //GUSA
+
+
+
+# ./components/main-nav.vue
+         <router-link 
+            to="/sample1" 
+            :class="navLinkClass"
+            :active-class="activeLinkClass"
+            :exact-active-class="activeLinkClass"
+        >
+            {{ t('common.overview') }}
+        </router-link>
+
+# ./components/tab-system/TabManager.vue
+
+function getPageTitle(path: string): string {
+  const titleMap: Record<string, string> = {
+    '/tasks': t('common.tasks'),
+    '/users': t('common.users'),
+    '/sample1': t('common.sample1'),               //GUSA
+
+  const routeComponentMap: Record<string, string> = {
+    '/dashboard': 'DashboardPage',
+    '/sample1': 'Sample1Page',                    // GUSA
+    '/tasks': 'TasksPage',
+    '/users': 'UsersPage',
+    '/settings': 'SettingsPage',
+    '/settings/account': 'SettingsAccountPage',
+    '/settings/appearance': 'SettingsAppearancePage',
+    '/settings/notifications': 'SettingsNotificationsPage',
+    '/settings/display': 'SettingsDisplayPage',
+    '/settings/profile': 'SettingsProfilePage',
+    '/apps': 'AppsPage',
+    '/ai-talk': 'AiTalkPage',
+    '/billing': 'BillingPage',
+    '/help-center': 'HelpCenterPage',
+    '/marketing': 'MarketingPage',
+    '/marketing/hello': 'MarketingHelloPage',
+  }
+
+-------------------------------------------------------------------------------
+$ grep -r  "sample2" src
+
+src/plugins/i18n/en.json:    "sample1": "Sample1",   
+src/pages/sample1/index.vue:    :title="$t('common.sample1')"
+src/types/typed-router.d.ts:    '/sample1/': RouteRecordInfo<'/sample1/', '/sample1', Record<never, never>, Record<never, never>>,
+src/composables/use-sidebar.ts:          title: 'common.sample1',    //GUSA
+src/composables/use-sidebar.ts:          url: '/sample1',
+src/components/tab-system/TabManager.vue:  '/sample1': 'Sample1Page',           // GUSA
+src/components/tab-system/TabManager.vue:    '/sample1': t('common.sample1'),               //GUSA
+src/components/main-nav.vue:            to="/sample1"
+
+-------------------------------------------------------------------------------
+$ grep -r  "sample2" src
+
+src/plugins/i18n/en.json:    "sample2": "Sample2",   
+src/pages/sample2/index.vue:    :title="$t('common.sample2')"
+src/types/typed-router.d.ts:    '/sample2/': RouteRecordInfo<'/sample2/', '/sample2', Record<never, never>, Record<never, never>>,
+src/composables/use-sidebar.ts:          title: 'common.sample2',    //GUSA
+src/composables/use-sidebar.ts:          url: '/sample2',
+src/components/tab-system/TabManager.vue:  '/sample2': 'Sample2Page',           // GUSA
+src/components/tab-system/TabManager.vue:    '/sample2': t('common.sample2'),               //GUSA
+src/components/main-nav.vue:            to="/sample2" 
+

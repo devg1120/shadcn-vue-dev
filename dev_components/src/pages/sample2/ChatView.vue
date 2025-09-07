@@ -590,19 +590,22 @@ onMounted(() => {
   /* height: 100vh;*/
   height: 100%;
   min-width: 0; /* Add this to prevent overflow */
-  background: #fafafa;
+ /* background: #fafafa; */
 }
 
 .messages-container {
   flex: 1;
   overflow-y: auto;
-  padding: 20px;
+  /*padding: 20px;*/
+  padding: 0px;
   scroll-behavior: smooth;
   width: 100%;
 }
 
 .message {
-  margin-bottom: 20px;
+  padding: 10px;
+  /*margin-bottom: 20px;*/
+  /* border-bottom: solid 1px red; */
 }
 
 .message-header {
@@ -619,7 +622,7 @@ onMounted(() => {
 .avatar {
   width: 36px;
   height: 36px;
-  background: #f0f0f0;
+  /* background: #f0f0f0; */
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -634,8 +637,8 @@ onMounted(() => {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #ccc;
-  border: 2px solid white;
+  /* background: #ccc;*/
+  /* border: 2px solid white; */
 }
 
 .status-dot.online {
@@ -658,7 +661,7 @@ onMounted(() => {
 
 .message-content :deep(.mention) {
   color: #1264a3;
-  background-color: #e8f5fa;
+  /* background-color: #e8f5fa; */
   padding: 0 4px;
   border-radius: 3px;
   cursor: pointer;
@@ -669,7 +672,7 @@ onMounted(() => {
 }
 
 .message-content :deep(.channel) {
-  color: #1264a3;
+ /*  color: #1264a3; */
   cursor: pointer;
 }
 
@@ -678,10 +681,10 @@ onMounted(() => {
 }
 
 .editor {
-  border-top: 1px solid #e5e5e5;
+  /* border-top: 1px solid #e5e5e5; */
   /* padding:  16px;*/
   padding:  4px 4px;
-  background: white;
+ /* background: white; */
   display: flex;
   flex-direction: column;
 }
@@ -700,7 +703,8 @@ textarea {
   resize: none; /* Change from vertical to none since we're handling height automatically */
   padding: 12px;
   padding-right: 40px; /* Space for emoji button */
-  border: 1px solid #e5e5e5;
+  /* border: 1px solid #e5e5e5; */
+  border: 1px dotted gray;
   border-radius: 4px;
   font-family: inherit;
   font-size: inherit;
@@ -718,8 +722,9 @@ textarea:focus {
   position: absolute;
   bottom: 100%;
   left: 0;
-  background: white;
-  border: 1px solid #e5e5e5;
+  /* background: white; */
+  /* border: 1px solid #e5e5e5; */
+  border: 1px dotted gray;
   border-radius: 4px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   max-height: 200px;
@@ -733,7 +738,7 @@ textarea:focus {
 }
 
 .suggestion:hover {
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
 }
 
 .suggestion-prefix {
@@ -823,7 +828,9 @@ textarea:focus {
 .comments {
   margin-left: 44px;
   margin-top: 8px;
-  border-left: 2px solid #e5e5e5;
+  /* border-left: 2px solid #e5e5e5; */
+  /* border-left: 2px solid gray; */
+  border-left: 2px solid #33ff99;
   padding-left: 12px;
 }
 
@@ -1213,14 +1220,17 @@ textarea:focus {
 .date-separator {
   display: flex;
   align-items: center;
-  margin: 28px 0;
-  padding: 0 16px;
+  /* margin: 28px 0; */
+  margin:  0;
+  /* padding: 0 16px; */
+  padding: 0 ;
 }
 
 .date-line {
   flex: 1;
   height: 1px;
-  background: #e5e5e5;
+  /* background: #e5e5e5; */
+  background: #0080ff;
 }
 
 .date-text {

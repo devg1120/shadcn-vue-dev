@@ -1,10 +1,24 @@
 
 <script setup lang="ts">
-import { ref, computed, useTemplateRef, onMounted } from 'vue'
+import { defineExpose, ref, computed, useTemplateRef, onMounted } from 'vue'
 
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import '@vueup/vue-quill/dist/vue-quill.bubble.css';
+
+    const model = defineModel()
+
+    const qeditor  = useTemplateRef('qeditor')
+
+
+    //受け取るデータの型を定義
+    interface Props {
+      placeholder?: string|null;
+    }
+    //withDefaults: propsのデフォルト値を定義
+    const props = withDefaults(defineProps<Props>(), {
+      placeholder: null
+    });
 
 
 let S = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -18,7 +32,8 @@ let toolbar_id = "my-toolbar-" + ID;
 let toolbar_sid = "#" + toolbar_id;
 
 
-const qeditor  = useTemplateRef('qeditor')
+
+
 //const qeditor  = ref();
 let isFocus = ref(false);
 
@@ -45,12 +60,98 @@ const classObject = computed(() => {
    }
 });
 
+let toolbar_option_all =  [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+  ['link', 'image', 'video', 'formula'],
 
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+  [{ 'direction': 'rtl' }],                         // text direction
 
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+  [{ 'align': [] }],
+
+  ['clean']
+];
+
+let toolbar_option =  [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+ // ['link', 'image', 'video', 'formula'],
+  ['link', 'image', 'video' ],
+
+ // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+ // [{ 'direction': 'rtl' }],                         // text direction
+
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+ // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+  [{ 'align': [] }],
+
+  ['clean']
+];
+let options = {
+  //debug: 'info',
+  debug: 'none',
+  modules: {
+    //toolbar: ['bold', 'italic', 'underline']
+    toolbar: toolbar_option
+  },
+  //placeholder: 'Compose an epic...',
+  placeholder: props.placeholder,
+  readOnly: false,
+  theme: 'snow'
+}
+
+function call() {
+  console.log("conponent call...OK");
+
+}
+function content_reset() {
+  console.log("content_reset call...OK");
+  //let qe = quilleditor.getEditor();
+  qeditor.value.setHTML("");
+
+}
+/*
+    const call = () => {
+      console.log("conponent call...OK");
+    }
+*/
+
+defineExpose({
+    call,
+    content_reset,
+});
 </script>
 
 <template>
+	<!--
   <QuillEditor theme="snow"   toolbar="full" />
+        //v-model="props.model"
+	content="ptops.model"
+	v-model:content="model"
+	-->
+  <QuillEditor 
+	ref="qeditor"
+	:options="options"
+	v-model:content="model"
+	contentType="html"
+
+  />
+
 </template>
 <style >
 

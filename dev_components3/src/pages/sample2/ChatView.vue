@@ -37,6 +37,10 @@ const showEmojiPickerForMessage = ref<string | null>(null)
 const selectedAttachment = ref<MessageAttachment | null>(null)
 const messagesContainer = ref<HTMLElement | null>(null)
 
+const rte = ref(null)
+
+
+
 const users = ['Batman Weave', 'Chipi Chipa', 'Nikunj Rami test']
 
 const channels = ['testing-mehuk-kanika-bhrugu', 'general', 'random']
@@ -137,6 +141,7 @@ const formatMessage = (content: string): string => {
 }
 
 const sendMessage = async () => {
+   console.log("newMessage",newMessage.value);
   if (newMessage.value.trim() || attachments.value.length > 0) {
     const messageAttachments = attachments.value.map((att) => ({
       name: att.file.name,
@@ -155,6 +160,8 @@ const sendMessage = async () => {
 
     newMessage.value = ''
     attachments.value = []
+    //rte.value.call();
+    rte.value.content_reset();
 
     // Wait for DOM update then scroll
     await nextTick()
@@ -533,7 +540,13 @@ onMounted(() => {
         @dragleave.prevent="handleDragLeave"
         :class="{ 'drag-over': isDragging }"
       >
-      <Rte />
+      <Rte        
+
+	   ref="rte"
+	   v-model="newMessage"
+           placeholder="Message #general (Use @ for mentions and # for channels)"
+      />
+
       <!--
         <textarea
           v-model="newMessage"

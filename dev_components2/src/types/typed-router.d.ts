@@ -52,6 +52,7 @@ declare module 'vue-router/auto-routes' {
     '/sample2/ChatMain': RouteRecordInfo<'/sample2/ChatMain', '/sample2/ChatMain', Record<never, never>, Record<never, never>>,
     '/sample2/ChatSidebar': RouteRecordInfo<'/sample2/ChatSidebar', '/sample2/ChatSidebar', Record<never, never>, Record<never, never>>,
     '/sample2/ChatView': RouteRecordInfo<'/sample2/ChatView', '/sample2/ChatView', Record<never, never>, Record<never, never>>,
+    '/sample2/Rte': RouteRecordInfo<'/sample2/Rte', '/sample2/Rte', Record<never, never>, Record<never, never>>,
     '/settings/': RouteRecordInfo<'/settings/', '/settings', Record<never, never>, Record<never, never>>,
     '/settings/account': RouteRecordInfo<'/settings/account', '/settings/account', Record<never, never>, Record<never, never>>,
     '/settings/appearance': RouteRecordInfo<'/settings/appearance', '/settings/appearance', Record<never, never>, Record<never, never>>,

@@ -444,6 +444,8 @@ onMounted(() => {
               </div>
               <span class="username">{{ message.user }}</span>
               <span class="timestamp">{{ message.timestamp }}</span>
+              <button class="edit-message" @click="showCommentInput = message.id" v-if="showCommentInput !== message.id">Edit</button>
+              <button class="delete-message" @click="showCommentInput = message.id" v-if="showCommentInput !== message.id">Delete</button>
             </div>
             <div class="message-content" v-html="formatMessage(message.content)"></div>
             <div v-if="message.attachments?.length" class="message-attachments">
@@ -479,6 +481,8 @@ onMounted(() => {
                   <div class="comment-header">
                     <span class="username">{{ comment.user }}</span>
                     <span class="timestamp">{{ comment.timestamp }}</span>
+                    <button class="edit-comment" @click="showCommentInput = message.id" v-if="showCommentInput !== message.id">Edit</button>
+                    <button class="delete-comment" @click="showCommentInput = message.id" v-if="showCommentInput !== message.id">Delete</button>
                   </div>
                   <div v-html="formatMessage(comment.content)"></div>
                 </div>
@@ -612,6 +616,29 @@ onMounted(() => {
   margin-bottom: 4px;
 }
 
+.edit-message {
+  margin-left: auto;
+  /* background: none;*/
+  /* background:#00cc66 ; */
+  background:#0080ff ;
+  border: none;
+  /*color: #666;*/
+  color: white;
+  cursor: pointer;
+  padding: 2px 4px;
+  font-size: 12px;
+}
+
+.delete-message {
+  /* background: none;*/
+  background:#a0a0a0 ;
+  border: none;
+  /*color: #666;*/
+  color: white;
+  cursor: pointer;
+  padding: 2px 4px;
+  font-size: 12px;
+}
 .avatar-container {
   position: relative;
 }
@@ -849,6 +876,7 @@ textarea:focus {
 .add-comment {
   /* background: none;*/
   background:#0080ff ;
+  background:#00cc66 ;
   border: none;
   /*color: #666;*/
   color: white;
@@ -858,6 +886,32 @@ textarea:focus {
   font-size: 12px;
 }
 
+.edit-comment {
+  /* margin-left: auto; */
+  margin-left: 150px;
+  /* background: none;*/
+  background:#00cc66 ;
+  background:#0080ff ;
+  border: none;
+  /*color: #666;*/
+  color: white;
+  cursor: pointer;
+  padding: 2px 4px;
+  height: 20px;
+  font-size: 12px;
+}
+
+.delete-comment {
+  /* background: none;*/
+  background:#a0a0a0 ;
+  border: none;
+  /*color: #666;*/
+  color: white;
+  cursor: pointer;
+  padding: 2px 4px;
+  height: 20px;
+  font-size: 12px;
+}
 .send-comment {
   /* background: none;*/
   background:#00cc66 ;

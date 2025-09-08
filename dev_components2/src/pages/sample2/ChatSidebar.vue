@@ -90,8 +90,9 @@ const toggleDMs = () => {
 .sidebar {
   width: 260px;
   min-width: 260px; /* Add this to prevent sidebar from shrinking */
-  background: white;
-  border-right: 1px solid #e5e5e5;
+  /* background: white; */
+  /* border-right: 1px solid #e5e5e5;*/
+  border-right: 1px dotted #a0a0a0;
   height: 100vh;
   overflow-y: auto;
 }
@@ -190,7 +191,7 @@ const toggleDMs = () => {
 .avatar {
   width: 32px;
   height: 32px;
-  background: #f0f0f0;
+  /* background: #f0f0f0;*/
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -205,8 +206,8 @@ const toggleDMs = () => {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ccc;
-  border: 2px solid white;
+  /* background: #ccc;*/
+  /* border: 2px solid white;*/
 }
 
 .status-dot.online {

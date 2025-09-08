@@ -494,7 +494,7 @@ onMounted(() => {
                 @keydown.enter.prevent="addComment(message.id)"
                 @input="adjustTextareaHeight"
               ></textarea>
-              <button @click="addComment(message.id)">Send</button>
+              <button class="send-comment" @click="addComment(message.id)">Send</button>
             </div>
 
             <div class="message-actions">
@@ -590,7 +590,7 @@ onMounted(() => {
   /* height: 100vh;*/
   height: 100%;
   min-width: 0; /* Add this to prevent overflow */
-  background: #fafafa;
+  /* background: #fafafa; */
 }
 
 .messages-container {
@@ -619,7 +619,7 @@ onMounted(() => {
 .avatar {
   width: 36px;
   height: 36px;
-  background: #f0f0f0;
+  /* background: #f0f0f0; */
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -634,8 +634,8 @@ onMounted(() => {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #ccc;
-  border: 2px solid white;
+  /* background: #ccc;*/
+  /* border: 2px solid white;*/
 }
 
 .status-dot.online {
@@ -648,7 +648,7 @@ onMounted(() => {
 
 .timestamp {
   color: #666;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .message-content {
@@ -678,10 +678,11 @@ onMounted(() => {
 }
 
 .editor {
-  border-top: 1px solid #e5e5e5;
+  /* border-top: 1px solid #e5e5e5;*/
+  /*border-top: 1px dotted #a0a0a0 ;*/
   /* padding:  16px;*/
   padding:  4px 4px;
-  background: white;
+  /* background: white;*/
   display: flex;
   flex-direction: column;
 }
@@ -700,7 +701,8 @@ textarea {
   resize: none; /* Change from vertical to none since we're handling height automatically */
   padding: 12px;
   padding-right: 40px; /* Space for emoji button */
-  border: 1px solid #e5e5e5;
+  /*border: 1px solid #e5e5e5;*/
+  border: 1px dotted gray;
   border-radius: 4px;
   font-family: inherit;
   font-size: inherit;
@@ -823,7 +825,8 @@ textarea:focus {
 .comments {
   margin-left: 44px;
   margin-top: 8px;
-  border-left: 2px solid #e5e5e5;
+  /* border-left: 2px solid #e5e5e5;*/
+  border-left: 4px solid #00ff80;
   padding-left: 12px;
 }
 
@@ -844,14 +847,28 @@ textarea:focus {
 }
 
 .add-comment {
-  background: none;
+  /* background: none;*/
+  background:#0080ff ;
   border: none;
-  color: #666;
+  /*color: #666;*/
+  color: white;
   cursor: pointer;
   margin-left: 44px;
-  padding: 4px 0;
+  padding: 2px 4px;
+  font-size: 12px;
 }
 
+.send-comment {
+  /* background: none;*/
+  background:#00cc66 ;
+  border: none;
+  /*color: #666;*/
+  color: white;
+  cursor: pointer;
+  margin-left: 0px;
+  padding: 2px 4px;
+  font-size: 12px;
+}
 .comment-input {
   margin-left: 44px;
   margin-top: 8px;
@@ -869,6 +886,7 @@ textarea:focus {
   line-height: 1.5;
   overflow-y: hidden;
   transition: height 0.1s ease-out;
+  border: dotted 1px gray;
 }
 
 .reactions {
@@ -1214,19 +1232,22 @@ textarea:focus {
   display: flex;
   align-items: center;
   margin: 28px 0;
-  padding: 0 16px;
+  /* padding: 0 16px;*/
+  padding: 0 0px;
 }
 
 .date-line {
   flex: 1;
   height: 1px;
-  background: #e5e5e5;
+  /* background: #e5e5e5;*/
+  background: gray;
+  background: #c0c0c0;
 }
 
 .date-text {
   padding: 0 16px;
-  color: #666;
-  font-size: 12px;
+   color: #666;
+  font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   white-space: nowrap;

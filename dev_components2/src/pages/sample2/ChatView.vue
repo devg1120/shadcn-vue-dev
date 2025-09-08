@@ -544,7 +544,6 @@ onMounted(() => {
           "
           @paste="handlePaste"
         ></textarea>
-
         <emoji-picker v-if="showEmojiPicker" class="emoji-picker" @emoji-click="insertEmoji"></emoji-picker>
 
         <div v-if="showSuggestions" class="suggestions">

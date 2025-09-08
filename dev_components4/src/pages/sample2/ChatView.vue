@@ -218,6 +218,8 @@ const addReaction = (messageId: string, emoji: string) => {
 const insertEmoji = (event: CustomEvent) => {
   // Get the emoji from the event detail
   const emoji = event.detail.unicode
+  console.log("Emoji", emoji);
+  rte.value.insert_emoji(emoji);
   const textarea = document.querySelector('textarea')
   if (textarea) {
     const start = textarea.selectionStart

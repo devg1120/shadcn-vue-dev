@@ -6,11 +6,11 @@ import { Quill, QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 
-import  quillEmoji from "quill-emoji";
-import 'quill-emoji/dist/quill-emoji.css';
+//import  quillEmoji from "quill-emoji";
+//import 'quill-emoji/dist/quill-emoji.css';
 
 //npmjs.com/package/quill-emoji
-Quill.register("modules/emoji", quillEmoji);
+//Quill.register("modules/emoji", quillEmoji);
 
    //Quill.register('modules/emoji');
    //Quill.register('modules/short_name_emoji', Emoji.ShortNameEmoji);
@@ -202,7 +202,7 @@ defineExpose({
 
   <QuillEditor 
 	ref="qeditor"
-	:options="options2"
+	:options="options"
 	v-model:content="model"
 	contentType="html"
 	/>

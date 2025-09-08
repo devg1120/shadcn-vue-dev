@@ -179,6 +179,12 @@ function content_reset() {
   qeditor.value.setHTML("");
 
 }
+function insert_emoji(emoji) {
+  console.log("insert emoji call...OK",emoji);
+  //let qe = qeditor.value.getEditor();
+  //qeditor.value.setHTML("");
+
+}
 /*
     const call = () => {
       console.log("conponent call...OK");
@@ -188,6 +194,7 @@ function content_reset() {
 defineExpose({
     call,
     content_reset,
+    insert_emoji,
 });
 </script>
 
@@ -213,7 +220,5 @@ defineExpose({
 
 </template>
 <style >
-.ql-emoji {
-}
 </style>
 

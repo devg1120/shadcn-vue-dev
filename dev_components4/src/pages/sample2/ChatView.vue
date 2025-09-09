@@ -8,6 +8,7 @@ import AttachmentViewer from './AttachmentViewer.vue'
 //import { Attachment, Message, MessageGroup, Suggestion } from '@/types/chat'
 import { Attachment, Message, MessageGroup, Suggestion } from './types/chat'
 import  Rte  from "./Rte.vue"
+import  CommentRte  from "./CommentRte.vue"
 
 const messages = ref<Message[]>([
   {
@@ -33,12 +34,14 @@ const attachments = ref<Attachment[]>([])
 const showCommentInput = ref<string | null>(null)
 const commentText = ref('')
 const showEmojiPicker = ref(false)
+const showCommentEmojiPicker = ref(false)
 const isDragging = ref(false)
 const showEmojiPickerForMessage = ref<string | null>(null)
 const selectedAttachment = ref<MessageAttachment | null>(null)
 const messagesContainer = ref<HTMLElement | null>(null)
 
 const rte = ref(null)
+const comment_rte = ref(null)
 
 
 
@@ -220,6 +223,7 @@ const insertEmoji = (event: CustomEvent) => {
   const emoji = event.detail.unicode
   console.log("Emoji", emoji);
   rte.value.insert_emoji(emoji);
+  /*
   const textarea = document.querySelector('textarea')
   if (textarea) {
     const start = textarea.selectionStart
@@ -232,9 +236,33 @@ const insertEmoji = (event: CustomEvent) => {
       textarea.focus()
     }, 0)
   }
+  */
   showEmojiPicker.value = false
 }
 
+const comment_insertEmoji = (event: CustomEvent) => {
+  // Get the emoji from the event detail
+  const emoji = event.detail.unicode
+  console.log("Emoji", emoji);
+  //console.log("comment_rte", comment_rte.value);
+  //comment_rte.value.insert_emoji(emoji);
+  comment_rte.value.insert_emoji(emoji);
+  /*
+  const textarea = document.querySelector('textarea')
+  if (textarea) {
+    const start = textarea.selectionStart
+    const end = textarea.selectionEnd
+    newMessage.value = newMessage.value.substring(0, start) + emoji + newMessage.value.substring(end)
+
+    // Reset cursor position
+    setTimeout(() => {
+      textarea.selectionStart = textarea.selectionEnd = start + emoji.length
+      textarea.focus()
+    }, 0)
+  }
+  */
+  showCommentEmojiPicker.value = false
+}
 const handleKeyDown = (event: KeyboardEvent) => {
   if (event.key === 'Enter') {
     if (event.shiftKey) {
@@ -503,8 +531,8 @@ onMounted(() => {
             <button class="add-comment" @click="showCommentInput = message.id" v-if="showCommentInput !== message.id">Reply</button>
 
             <div v-if="showCommentInput === message.id" class="comment-input">
-               <Rte        
-                    ref="rte"
+               <CommentRte        
+                    ref="comment_rte"
                     v-model="commentText"
                     placeholder="addComment(message.id)"
                />
@@ -517,7 +545,11 @@ onMounted(() => {
                 @input="adjustTextareaHeight"
               ></textarea>
 -->
-              <button class="send-comment" @click="addComment(message.id)">Send</button>
+<!--
+              <emoji-picker v-if="showCommentEmojiPicker" class="comment-emoji-picker" @emoji-click="comment_insertEmoji"></emoji-picker>
+              <button class="emoji-button" @click="showCommentEmojiPicker = !showCommentEmojiPicker">😊</button>
+-->
+              <button class="send-comment" @click="addComment(message.id)">Comment Send</button>
             </div>
 
             <div class="message-actions">
@@ -996,6 +1028,10 @@ textarea:focus {
   position: absolute;
   bottom: 100%;
   left: 0;
+  z-index: 1000;
+}
+.comment-emoji-picker {
+  bottom: 100%;
   z-index: 1000;
 }
 

@@ -504,7 +504,6 @@ onMounted(() => {
 
             <div v-if="showCommentInput === message.id" class="comment-input">
                <Rte        
-                    ref="rte"
                     v-model="commentText"
                     placeholder="addComment(message.id)"
                />
@@ -736,8 +735,10 @@ onMounted(() => {
   /* padding:  16px;*/
   padding:  4px 4px;
   /* background: white;*/
+  /*
   display: flex;
   flex-direction: column;
+  */
 }
 
 .editor-container {

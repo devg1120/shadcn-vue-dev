@@ -4,7 +4,7 @@ import { defineExpose, ref, computed, useTemplateRef, onMounted } from 'vue'
 
 import { Quill, QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import '@vueup/vue-quill/dist/vue-quill.bubble.css';
+//import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 
 import  quillEmoji from "quill-emoji";
 import 'quill-emoji/dist/quill-emoji.css';
@@ -12,11 +12,10 @@ import 'quill-emoji/dist/quill-emoji.css';
 //npmjs.com/package/quill-emoji
 Quill.register("modules/emoji", quillEmoji);
 
-   //Quill.register('modules/emoji');
-   //Quill.register('modules/short_name_emoji', Emoji.ShortNameEmoji);
-   // Quill.register('modules/toolbar_emoji', Emoji.ToolbarEmoji);
-   // Quill.register('modules/textarea_emoji', Emoji.TextAreaEmoji);
-   // Quill.register('formats/emoji', Emoji.EmojiBlot);
+   Quill.register('modules/emoji-shortname', quillEmoji.ShortNameEmoji);
+   Quill.register('modules/emoji-toolbar', quillEmoji.ToolbarEmoji);
+   Quill.register('modules/emoji-textarea', quillEmoji.TextAreaEmoji);
+   Quill.register('formats/emoji', quillEmoji.EmojiBlot);
 
     const model = defineModel()
 
@@ -44,7 +43,7 @@ let toolbar_id = "my-toolbar-" + ID;
 let toolbar_sid = "#" + toolbar_id;
 
 
-
+/*
 
 //const qeditor  = ref();
 let isFocus = ref(false);
@@ -71,6 +70,7 @@ const classObject = computed(() => {
       return "toolbar-hidden";
    }
 });
+*/
 
 let toolbar_option_all =  [
   ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -134,7 +134,7 @@ let options2 = {
           modules: {
             "emoji-toolbar": true,
             "emoji-shortname": true,
-	    "emoji-textarea": true,
+    "emoji-textarea": true,
 
             toolbar: {
               container: [

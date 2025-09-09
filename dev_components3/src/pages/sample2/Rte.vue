@@ -9,14 +9,8 @@ import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 //import  quillEmoji from "quill-emoji";
 //import 'quill-emoji/dist/quill-emoji.css';
 
-//npmjs.com/package/quill-emoji
 //Quill.register("modules/emoji", quillEmoji);
 
-   //Quill.register('modules/emoji');
-   //Quill.register('modules/short_name_emoji', Emoji.ShortNameEmoji);
-   // Quill.register('modules/toolbar_emoji', Emoji.ToolbarEmoji);
-   // Quill.register('modules/textarea_emoji', Emoji.TextAreaEmoji);
-   // Quill.register('formats/emoji', Emoji.EmojiBlot);
 
     const model = defineModel()
 
@@ -179,6 +173,16 @@ function content_reset() {
   qeditor.value.setHTML("");
 
 }
+function insert_emoji(emoji) {
+  console.log("insert emoji call...OK",emoji);
+  //let qe = qeditor.value.getEditor();
+  //qeditor.value.setHTML("");
+  let quill = qeditor.value.getQuill()
+  let selection = quill.getSelection( );
+  //quill.insertText(range.anchorOffset,emoji);
+  quill.insertText(selection.index,emoji);
+
+}
 /*
     const call = () => {
       console.log("conponent call...OK");
@@ -188,6 +192,7 @@ function content_reset() {
 defineExpose({
     call,
     content_reset,
+    insert_emoji,
 });
 </script>
 
@@ -213,7 +218,5 @@ defineExpose({
 
 </template>
 <style >
-.ql-emoji {
-}
 </style>
 

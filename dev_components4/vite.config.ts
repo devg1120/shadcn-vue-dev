@@ -23,7 +23,14 @@ export default defineConfig({
       exclude: RouteGenerateExclude,
       dts: 'src/types/typed-router.d.ts', // 类型提示文件
     }),
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => ['emoji-picker'].includes(tag),
+        }
+      }
+    }),
+    
     vueJsx(),
     vueDevTools(),
     tailwindcss(),

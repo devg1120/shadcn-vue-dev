@@ -20,7 +20,7 @@ const props = defineProps({
 });
 //const emit = defineEmits(["addComment"])
 
-
+const emit = defineEmits(["deleteComment"])
 //const message = ref(props.message);
 
 let message_ = {
@@ -484,6 +484,13 @@ onMounted(() => {
 const set_editMode = () => {
     rte.value.set_editMode()
 }
+
+const comment_delete = () => {
+     console.log("comment_delete:", props.comment);
+     emit('deleteComment', props.comment.id);
+
+}
+
 </script>
 
 <template>
@@ -496,7 +503,7 @@ const set_editMode = () => {
                     <span class="timestamp">{{ comment.timestamp }}</span>
 		    
                     <button class="edit-comment" @click="set_editMode()" >CEdit</button>
-                    <button class="delete-comment" @click="" >Delete</button>
+                    <button class="delete-comment" @click="comment_delete" >Delete</button>
                   </div>
 <!--
                   <div v-html="formatMessage(comment.content)"></div>

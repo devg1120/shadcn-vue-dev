@@ -188,6 +188,20 @@ const sendMessage = async () => {
   }
 }
 
+const deleteComment = async (info) => {
+ console.log("deleteComment:", info);
+  let messageId = info.messageId;
+  let commentId = info.commentId;
+
+  const message = messages.value.find((m) => m.id === messageId)
+  if (!message) return
+  console.log("old comments", message.comments);
+  let new_comments = message.comments.filter((c) => c.id !== commentId)
+  console.log("new comments", new_comments);
+  message.comments = new_comments;
+  await nextTick()
+}
+
 const addComment = async (info) => {
   console.log("addComment:", info);
   let messageId = info.messageId;
@@ -537,7 +551,7 @@ onMounted(() => {
                  props
 		    message
           -->
-	  <MessagePart :message="message"  @addComment="addComment" />
+	  <MessagePart :message="message"  @addComment="addComment"  @deleteComment="deleteComment"/>
 	  <!-- message end   ------------------------------------------------------------------------>
 
 

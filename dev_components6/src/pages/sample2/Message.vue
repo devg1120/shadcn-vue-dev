@@ -36,8 +36,7 @@ const messages = ref<Message[]>([
 const props = defineProps({
   message: {}
 });
-const emit = defineEmits(["addComment"])
-
+const emit = defineEmits(["addComment", "deleteComment"]);
 
 //const message = ref(props.message);
 
@@ -195,6 +194,15 @@ const sendMessage = async () => {
   }
 }
 
+const deleteComment = async (commentId: string) => {
+ console.log("*** deleteComment", commentId);
+  let info = {
+      messageId: props.message.id,
+      commentId: commentId
+      };
+
+  emit('deleteComment', info);
+}
 const addComment = async (messageId: string) => {
   console.log("addComent:",messageId);
   let info = {
@@ -561,7 +569,7 @@ const set_editMode = () => {
             </div>
             <div class="comments" v-if="message.comments?.length">
               <div v-for="comment in message.comments" :key="comment.id" class="comment">
-               <Comment :comment="comment" />
+               <Comment :comment="comment"  @deleteComment="deleteComment"/>
 <!--
                 <div class="avatar">{{ comment.avatar }}</div>
                 <div class="comment-content">

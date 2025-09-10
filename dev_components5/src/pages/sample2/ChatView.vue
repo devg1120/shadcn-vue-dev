@@ -188,6 +188,11 @@ const sendMessage = async () => {
   }
 }
 
+const deleteComment = async (info) => {
+ console.log("deleteComment:", info);
+
+}
+
 const addComment = async (info) => {
   console.log("addComment:", info);
   let messageId = info.messageId;

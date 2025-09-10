@@ -482,7 +482,9 @@ onMounted(() => {
 })
 
 const set_editMode = () => {
-    rte.value.set_editMode()
+    if (rte.value.set_editMode() ) {
+          console.log("COMMENT UPDATE", props.comment);
+    }
 }
 
 const comment_delete = () => {

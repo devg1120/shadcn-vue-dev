@@ -194,10 +194,12 @@ function set_editMode() {
        quill.enable(true);
        console.log( "edit mode");
        quillEditor.classList.add('editting');
+       return false;
   } else {
        quill.enable(false);
        console.log( "not edit mode");
        quillEditor.classList.remove('editting');
+       return true;
 
   }
 

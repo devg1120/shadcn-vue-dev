@@ -20,7 +20,7 @@ const props = defineProps({
 });
 //const emit = defineEmits(["addComment"])
 
-const emit = defineEmits(["deleteComment"])
+const emit = defineEmits(["deleteComment","updateComment"])
 //const message = ref(props.message);
 
 let message_ = {
@@ -484,6 +484,7 @@ onMounted(() => {
 const set_editMode = () => {
     if (rte.value.set_editMode() ) {
           console.log("COMMENT UPDATE", props.comment);
+          emit('updateComment', props.comment.id);
     }
 }
 

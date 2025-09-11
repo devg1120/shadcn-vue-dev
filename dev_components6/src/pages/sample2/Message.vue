@@ -36,7 +36,12 @@ const messages = ref<Message[]>([
 const props = defineProps({
   message: {}
 });
-const emit = defineEmits(["addComment", "deleteComment"]);
+const emit = defineEmits(["addComment", 
+                          "deleteComment",
+			  "updateComment",
+                          "deleteMessage",
+                          "updateMessage"
+			  ]);
 
 //const message = ref(props.message);
 
@@ -192,6 +197,17 @@ const sendMessage = async () => {
     await nextTick()
     scrollToBottom()
   }
+}
+
+const updateComment = async (commentId: string) => {
+ console.log("*** updateComment", commentId);
+  let info = {
+      messageId: props.message.id,
+      commentId: commentId
+      };
+
+  emit('updateComment', info);
+
 }
 
 const deleteComment = async (commentId: string) => {
@@ -508,8 +524,18 @@ onMounted(() => {
 })
 
 const set_editMode = () => {
-    rte.value.set_editMode()
+    //rte.value.set_editMode()
+    if (rte.value.set_editMode() ) {
+          console.log("Message UPDATE", props.message.id);
+          emit('updateMessage', props.message.id);
+    }
 }
+const deleteMessage = () => {
+   console.log("Message DELETE", props.message.id);
+   emit('deleteMessage', props.message.id);
+
+}
+
 </script>
 
 <template>
@@ -530,7 +556,7 @@ const set_editMode = () => {
                  <button class="edit-message" @click="showCommentInput = message.id" v-if="showCommentInput !== message.id">M-Edit</button>
 		 -->
                  <button class="edit-message" @click="set_editMode()">Edit</button>
-                 <button class="delete-message" @click="showCommentInput = message.id" v-if="showCommentInput !== message.id">Delete</button>
+                 <button class="delete-message" @click="deleteMessage">Delete</button>
             </div>
 	    
 	    <!--
@@ -569,7 +595,7 @@ const set_editMode = () => {
             </div>
             <div class="comments" v-if="message.comments?.length">
               <div v-for="comment in message.comments" :key="comment.id" class="comment">
-               <Comment :comment="comment"  @deleteComment="deleteComment"/>
+               <Comment :comment="comment"  @deleteComment="deleteComment"  @updateComment="updateComment"/>
 <!--
                 <div class="avatar">{{ comment.avatar }}</div>
                 <div class="comment-content">

@@ -159,6 +159,17 @@ const formatMessage = (content: string): string => {
     .replace(/#(\w+)/g, '<span class="channel">#$1</span>')
 }
 
+const updateMessage = async (messageId) => {
+ console.log("updateMessage:", messageId);
+ const message = messages.value.find((m) => m.id === messageId)
+ console.log("message", message);
+}
+const deleteMessage = async (messageId) => {
+ console.log("deletMessage:", messageId);
+ let new_messages = messages.value.filter((m) => m.id !== messageId)
+ messages.value = new_messages;
+}
+
 const sendMessage = async () => {
    console.log("newMessage",newMessage.value);
   if (newMessage.value.trim() || attachments.value.length > 0) {
@@ -188,6 +199,16 @@ const sendMessage = async () => {
   }
 }
 
+const updateComment = async (info) => {
+ console.log("updateComment:", info);
+  let messageId = info.messageId;
+  let commentId = info.commentId;
+  const message = messages.value.find((m) => m.id === messageId)
+  if (!message) return
+  let comment = message.comments.find((c) => c.id === commentId)
+  console.log("comment", comment);
+  
+}
 const deleteComment = async (info) => {
  console.log("deleteComment:", info);
   let messageId = info.messageId;
@@ -551,7 +572,13 @@ onMounted(() => {
                  props
 		    message
           -->
-	  <MessagePart :message="message"  @addComment="addComment"  @deleteComment="deleteComment"/>
+	  <MessagePart :message="message"  
+	           @addComment="addComment" 
+		   @deleteComment="deleteComment"
+		   @updateComment="updateComment"
+		   @deleteMessage="deleteMessage"
+		   @updateMessage="updateMessage"
+		   />
 	  <!-- message end   ------------------------------------------------------------------------>
 
 
